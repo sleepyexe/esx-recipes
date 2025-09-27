@@ -1,5 +1,4 @@
 $engine: 3
-$minFxVersion: 5949
 $onesync: on
 name: ESX Legacy
 author: ESX Framework
@@ -12,10 +11,9 @@ tasks:
     ref: master
     subpath: resources
     dest: ./resources/[cfx-default]
-
   - action: remove_path
     path: ./resources/[cfx-default]/[gameplay]/chat
-
+  
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_github
     src: https://github.com/sleepyexe/esx-recipes/
@@ -26,7 +24,11 @@ tasks:
     src: ./tmp/recipe/server.cfg
     dest: ./server.cfg
 
-  # Download and prepare overextended configuration
+  - action: move_path
+    src: ./tmp/recipe/esxLogo.png
+    dest: ./esxLogo.png
+
+      # Download and prepare overextended configuration
   - action: download_github
     src: https://github.com/sleepyexe/esx-recipes/
     ref: sleepyexe-test
@@ -71,9 +73,6 @@ tasks:
     ref: main
     dest: ./resources/[standalone]/pma-voice
 
-  - action: waste_time # prevent github throttling
-    seconds: 5
-
   - action: download_file
     path: ./tmp/files/oxmysql.zip
     url: https://github.com/CommunityOx/oxmysql/releases/latest/download/oxmysql.zip
@@ -111,14 +110,14 @@ tasks:
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_doorlock.zip
-    
+
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/files/oxmysql.zip
+
   ## Cleanup
   - action: remove_path
     path: ./tmp
-  - action: remove_path
-    path: ./resources/[core]/esx_example
-
-  - action: replace_string
-    file: ./resources/[core]/es_extended/shared/config/main.lua
-    search: 'Config.CustomInventory = false'
-    replace: 'Config.CustomInventory = "ox"'

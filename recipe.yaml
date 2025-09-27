@@ -18,8 +18,8 @@ tasks:
 
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_github
-    src: https://github.com/esx-framework/esx-recipes
-    ref: new-ox
+    src: https://github.com/sleepyexe/esx-recipes/
+    ref: sleepyexe-test
     dest: ./tmp/recipe
 
   - action: move_path
@@ -28,8 +28,8 @@ tasks:
 
   # Download and prepare overextended configuration
   - action: download_github
-    src: https://github.com/esx-framework/esx-recipes
-    ref: new-ox
+    src: https://github.com/sleepyexe/esx-recipes/
+    ref: sleepyexe-test
     dest: ./tmp/recipe
 
   - action: move_path

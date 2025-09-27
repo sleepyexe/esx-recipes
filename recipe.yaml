@@ -118,6 +118,9 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/files/oxmysql.zip
 
+  - action: query_database
+    file: ./resources/[ox]/ox_doorlock/sql/ox_doorlock.sql
+    
   ## Cleanup
   - action: remove_path
     path: ./tmp

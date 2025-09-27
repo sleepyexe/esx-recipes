@@ -26,6 +26,16 @@ tasks:
     src: ./tmp/recipe/server.cfg
     dest: ./server.cfg
 
+  # Download and prepare overextended configuration
+  - action: download_github
+    src: https://github.com/esx-framework/esx-recipes
+    ref: new-ox
+    dest: ./tmp/recipe
+
+  - action: move_path
+    src: ./tmp/recipe/ox.cfg
+    dest: ./ox.cfg
+
   # Download basic resources and ESX dependencies
 
   - action: connect_database
@@ -229,38 +239,38 @@ tasks:
 
   - action: download_file
     path: ./tmp/files/oxmysql.zip
-    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    url: https://github.com/CommunityOx/oxmysql/releases/latest/download/oxmysql.zip
   - action: unzip
     dest: ./resources/[standalone]
     src: ./tmp/files/oxmysql.zip
 
   - action: download_file
     path: ./tmp/files/ox_lib.zip
-    url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
+    url: https://github.com/CommunityOx/ox_lib/releases/latest/download/ox_lib.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_lib.zip
 
   - action: download_file
     path: ./tmp/files/ox_inventory.zip
-    url: https://github.com/overextended/ox_inventory/releases/latest/download/ox_inventory.zip
+    url: https://github.com/CommunityOx/ox_inventory/releases/latest/download/ox_inventory.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_inventory.zip
 
   - action: download_github
-    src: https://github.com/overextended/ox_fuel
+    src: https://github.com/CommunityOx/ox_fuel
     ref: main
     dest: ./resources/[ox]/ox_fuel
 
   - action: download_github
-    src: https://github.com/overextended/ox_target
+    src: https://github.com/CommunityOx/ox_target
     ref: main
     dest: ./resources/[ox]/ox_target
 
   - action: download_file
     path: ./tmp/files/ox_doorlock.zip
-    url: https://github.com/overextended/ox_doorlock/releases/latest/download/ox_doorlock.zip
+    url: https://github.com/CommunityOx/ox_doorlock/releases/latest/download/ox_doorlock.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_doorlock.zip
